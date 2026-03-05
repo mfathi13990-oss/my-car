@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة السيارة الرقمية</title>
+    <style>
+        :root { --primary: #007bff; --danger: #dc3545; --success: #28a745; --dark: #333; }
+        body { font-family: sans-serif; background: #f4f4f4; margin: 0; padding: 20px; text-align: center; }
+        .card { background: white; border-radius: 15px; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 400px; margin: auto; }
+        .btn { display: block; width: 100%; padding: 12px; margin: 10px 0; border: none; border-radius: 8px; color: white; text-decoration: none; font-weight: bold; cursor: pointer; font-size: 16px; }
+        .btn-call { background: var(--success); }
+        .btn-wa { background: #25D366; }
+        .btn-social { background: var(--dark); }
+        .emergency-section { background: #fff5f5; border: 2px solid var(--danger); border-radius: 10px; padding: 10px; margin-top: 20px; }
+        .hidden { display: none !important; }
+        #message-box { margin-top: 20px; }
+        input, textarea { width: 90%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .toggle-btn { background: var(--danger); margin-top: 30px; }
+        .status-msg { color: var(--danger); font-weight: bold; margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div id="main-content">
+        <h2>🚗 بيانات صاحب السيارة</h2>
+        <a href="tel:01008543899" class="btn btn-call">📞 اتصال مباشر</a>
+        <a href="https://wa.me/201008543899" class="btn btn-wa">💬 واتساب</a>
+        
+        <hr>
+        
+        <h4>📱 التواصل الاجتماعي</h4>
+        <a href="https://www.facebook.com/share/16wXp7DSEm/?mibextid=wwXIfr" class="btn btn-social">Facebook</a>
+        <a href="https://www.instagram.com/mahmoud_fathi13?igsh=M2o0azQ4b3R5N3hh" class="btn btn-social">Instagram</a>
+        <a href="https://www.tiktok.com/@capmahmoudfathimoharm?_r=1&_t=ZS-94RQgjGvLVP" class="btn btn-social">TikTok</a>
+
+        <div class="emergency-section">
+            <h4 style="color: var(--danger);">🩺 طوارئ طبية</h4>
+            <p>فصيلة الدم: <b>A+</b></p>
+            <p>رقم الطوارئ (الأهل): <br> <a href="tel:01555540899">01555540899</a></p>
+        </div>
+
+        <h4>🖼 معرض الصور</h4>
+        <div style="background: #eee; height: 100px; line-height: 100px; border-radius: 10px;">[هنا تضع صورك]</div>
+    </div>
+
+    <div id="closed-message" class="hidden">
+        <p class="status-msg">⚠️ عذراً، صاحب السيارة أغلق خاصية التواصل المباشر حالياً.</p>
+    </div>
+
+    <div id="message-box">
+        <h4>💌 اترك رسالة لصاحب السيارة</h4>
+        <form action="https://formspree.io/f/your_id" method="POST">
+            <input type="text" placeholder="اسمك" required>
+            <textarea placeholder="اكتب رسالتك هنا (مثلاً: ركنة غلط، النور منور..)" required></textarea>
+            <button type="submit" class="btn" style="background: var(--primary);">إرسال الرسالة</button>
+        </form>
+    </div>
+
+    <button onclick="togglePrivacy()" class="btn toggle-btn" id="toggleBtn">إغلاق الصفحة (خصوصية)</button>
+</div>
+
+<script>
+    function togglePrivacy() {
+        const content = document.getElementById('main-content');
+        const closedMsg = document.getElementById('closed-message');
+        const btn = document.getElementById('toggleBtn');
+
+        if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            closedMsg.classList.add('hidden');
+            btn.innerText = "إغلاق الصفحة (خصوصية)";
+            btn.style.background = "#dc3545";
+        } else {
+            content.classList.add('hidden');
+            closedMsg.classList.remove('hidden');
+            btn.innerText = "فتح الصفحة (إظهار البيانات)";
+            btn.style.background = "#28a745";
+        }
+    }
+</script>
+
+</body>
+</html>
